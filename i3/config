@@ -66,9 +66,12 @@ bindsym $mod+q kill
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # switching workspaces sequentialy
-bindsym Control+Right workspace next
-bindsym Control+Left workspace prev
+bindsym Control+Right workspace prev_on_output
+bindsym Control+Left workspace next_on_output
 
+# setting brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -232,11 +235,13 @@ for_window [class="^.*"] border pixel 1
 # gaps outer 5
 gaps inner 5
 
+exec openrazer-daemon
+exec libinput-gestures
+exec xbacklight -set 20
 exec picom
 exec --no-startup-id i3-msg 'workspace 9; exec discord'
 exec --no-startup-id i3-msg 'workspace 9; exec whatsapp-for-linux'
 exec feh --bg-scale ~/Pictures/wallpaper.jpg
-exec setupTripleMonitors
 
 bindsym Control+$mod+l exec "i3lock -c 000000 & sleep 5 && xset dpms force off"
 bindsym Print exec spectacle
