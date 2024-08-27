@@ -66,8 +66,8 @@ bindsym $mod+q kill
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # switching workspaces sequentialy
-bindsym Control+Right workspace prev_on_output
-bindsym Control+Left workspace next_on_output
+bindsym Control+Right workspace next_on_output
+bindsym Control+Left workspace prev_on_output
 
 # setting brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
