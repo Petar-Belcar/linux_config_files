@@ -12,6 +12,9 @@
 
 set $mod Mod4
 
+#Setting the refresh rate based on battery status
+exec sh ~/.config/i3/battery.sh
+
 # set $mainMonitor DisplayPort-0
 # set $leftMonitor DisplayPort-1
 
@@ -235,9 +238,14 @@ for_window [class="^.*"] border pixel 1
 # gaps outer 5
 gaps inner 5
 
-exec openrazer-daemon
+# This may not be needed
+# exec openrazer-daemon
+
 exec libinput-gestures
+
+# using acpilight
 exec xbacklight -set 15
+
 exec picom
 exec --no-startup-id i3-msg 'workspace 9; exec discord'
 exec --no-startup-id i3-msg 'workspace 9; exec whatsapp-for-linux'
