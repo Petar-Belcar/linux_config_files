@@ -237,7 +237,7 @@ gaps inner 5
 
 exec openrazer-daemon
 exec libinput-gestures
-exec xbacklight -set 20
+exec xbacklight -set 15
 exec picom
 exec --no-startup-id i3-msg 'workspace 9; exec discord'
 exec --no-startup-id i3-msg 'workspace 9; exec whatsapp-for-linux'
