@@ -9,10 +9,15 @@ input type:touchpad {
     tap enabled
 }
 
+input type:pointer {
+    accel_profile "flat"
+    pointer_accel 0.5
+}
 
-output "DP-9" mode  1920x1200@59.95Hz pos 0 0 transform normal scale 1.6 scale_filter nearest adaptive_sync off dpms on scale 1
-output "DP-8" mode  1920x1200@59.95Hz pos 1920 0 transform normal scale 1.0 scale_filter nearest adaptive_sync off dpms on scale 1
-output "eDP-1" mode  2880x1620@120.002Hz pos 1145 1200 transform normal scale 1.0 scale_filter nearest adaptive_sync off dpms on scale 2
+
+output "DP-9" mode  1920x1200@59.95Hz pos 1920 0 transform normal scale 1.0 scale_filter nearest adaptive_sync off dpms on
+output "DP-8" mode  1920x1200@59.95Hz pos 0 0 transform normal scale 1.0 scale_filter nearest adaptive_sync off dpms on
+output "eDP-1" mode  2880x1620@120.002Hz pos 1145 1200 transform normal scale 1.6 scale_filter nearest adaptive_sync on dpms on
 
 # Setting up workspaces
 set $mainMonitor eDP-1
@@ -108,7 +113,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec 'swaymsg exit'
 #
 # Moving around:
 #
@@ -235,7 +240,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    bindsym Print exec grim -g "$(slurp)"
 
 #
 # Status Bar:
